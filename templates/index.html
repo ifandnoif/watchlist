@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{{ name }}关注的上市公司清单</title>
+</head>
+<body>
+	<h2>{{ name }}关注的上市公司清单</h2>
+	{# 使用 length 过滤器获取 companys 变量的长度 #}
+	<p>目前清单上共有：{{ companys|length }}家上市公司</p>
+	<ul>
+		{% for company in companys %}  {# 迭代 companys 变量 #}
+		<li>{{ company.title }} - {{ company.code }}</li>  {# 等同于
+		company['title'] #}
+		{% endfor %} {# 使用 endfor 标签结束 for 语句 #}
+	</ul>
+	<footer>
+		<small>&copy; 2021 <a href="http://helloflask.com/tutori
+al">HelloFlask</a></small>
+	</footer>
+</body>
+</html>
