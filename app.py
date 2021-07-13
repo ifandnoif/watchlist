@@ -1,4 +1,3 @@
-
 import os
 import sys
 import click
@@ -68,8 +67,17 @@ class Company(db.Model): #表名将会是company
 	title = db.Column(db.String(60)) #上市公司名称
 	code = db.Column(db.String(6)) #股票代码
 
+@app.context_processor #函数名可以随意修改
+def inject_user():
+	user = User.query.first()
+	return dict(user=user) # 需要返回字典，等同于return{'user':user}
+
+@app.errorhandler(404) # 传入要处理的错误代码
+def page_not_found(e): # 接受异常对象做为参数
+	return render_template('404.html'), 404 # 返回模板和状态码
+
 @app.route('/')
 def index():
-	user = User.query.first() #读取用户记录
-	company = Company.query.all() #读取所有上市公司记录
-	return render_template('index.html', user=user, companys=companys)
+	companys = Company.query.all() #读取所有上市公司记录
+	return render_template('index.html', companys=companys)
+

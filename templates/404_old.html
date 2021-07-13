@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset="utf-8">
+	<title>{{ user.name }}关注的上市公司清单</title>
+	<link rel="icon" href="{{ url_for('static', filename='zm.gif')}}">
+	<link rel="stylesheet" type="text/css" href="{{
+		url_for('static',filename='style.css')}}">
+</head>
+<body>
+	<h2>
+		<img alt="Zmtx" class="zmtx" src="{{ url_for('static',filename='images/zmtx.gif')}}">
+		{{ user.name }}关注的上市公司清单
+	</h2>
+	<ul class="company-list">
+		<li>
+			Page Not Found - 404
+			<span class="float-right">
+				<a href="{{ url_for('index')}}">返回</a>
+			</span>
+		</li>
+	</ul>
+	<footer>
+		<small>&copy; 2018 <a href="http://helloflask.com/tutori
+		al">HelloFlask</a></small>
+	</footer>
+</body>
+</html>

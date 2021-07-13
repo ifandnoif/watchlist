@@ -1,28 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>{{ useer.name }}关注的上市公司清单</title>
-	<link rel="icon" href="{{ url_for('static', filename='zm.gif')}}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}">
-</head>
-<body>
-	<h2>
-		<img alt='Zmtx' class="zmtx" src="{{ url_for('static', filename='images/zmtx.gif')}}">		
-		{{ user.name }}关注的上市公司清单
-	</h2>
-	{# 使用 length 过滤器获取 companys 变量的长度 #}
-	<p>目前清单上共有：{{ companys|length }}家上市公司</p>
-	<ul class="company-list">
-		{% for company in companys %}  {# 迭代 companys 变量 #}
-		<li>{{ company.title }} - {{ company.code }}</li>  {# 等同于
-		company['title'] #}
-		{% endfor %} {# 使用 endfor 标签结束 for 语句 #}
-	</ul>
-	<img alt="Mgt" class="mgt" src="{{ url_for('static', filename='images/mgt.gif')}}">
-	<footer>
-		<small>&copy; 2021 <a href="http://helloflask.com/tutori
-al">HelloFlask</a></small>
-	</footer>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<p>目前清单上共有：{{ companys|length }}家上市公司</p>
+<ul class="company-list">
+	{% for company in companys %}
+	<li>{{ company.title }} - {{ company.code }}
+		<span class="float-right">
+			<a class="dfcf" href="https://so.eastmoney.com/web/s?keyword={{company.title}}" target="blank" title="通过东方财富网获取上市公司信息">东方财富</a>
+		</span>
+	</li>
+	{% endfor %}
+</ul>
+<img alt="Mgt" class="mgt" src="{{ url_for('static', filename='images/mgt.gif') }}" title="mgt">
+{% endblock %}

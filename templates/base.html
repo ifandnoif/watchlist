@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	{% block head %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ user.name }}关注的上市公司清单</title>
+	<link rel="icon" href="{{ url_for('static', filename='zm.gif')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+	{% endblock %}
+</head>
+<body>
+	<h2>
+		<img alt="Zmtx" class="zmtx" src="{{ url_for('static', filename='images/zmtx.gif')}}">
+		{{ user.name }}关注的上市公司清单
+	</h2>
+	<nav>
+		<ul>
+			<li><a href="{{ url_for('index') }}">返回</a></li>
+		</ul>
+	</nav>
+	{% block content %}{% endblock %}
+	<footer>
+		<small>&copy; 2018 <a href="http://helloflask.com/tutorial">HelloFlask</a></small>
+	</footer>
+</body>
+</html>
