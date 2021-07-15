@@ -1,12 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p>目前清单上共有：{{ companys|length }}家上市公司</p>
+<p>目前关注的上市公司共计：{{ companys|length }}家</p>
+{% if current_user.is_authenticated %}
+<form method="post">
+	股票名称：<input type="text" name="title" autocomplete="off" required>&nbsp&nbsp
+	股票代码：<input type="text" name="code" autocomplete="off" required>
+	<input class="btn" type="submit" name="submit" value="新增">
+</form>
+{% endif %}
 <ul class="company-list">
 	{% for company in companys %}
 	<li>{{ company.title }} - {{ company.code }}
 		<span class="float-right">
-			<a class="dfcf" href="https://so.eastmoney.com/web/s?keyword={{company.title}}" target="blank" title="通过东方财富网获取上市公司信息">东方财富</a>
+		{% if current_user.is_authenticated %}
+			<a class="btn" href="{{ url_for('edit', company_id=company.id) }}">编辑</a>
+			<form class="inline-form" method="post" action="{{ url_for('delete', company_id=company.id) }}">
+				<input class="btn" type="submit" name="delete" value="删除" onclick="return confirm('您确定要删除吗？')">	
+			</form>
+		{% endif %}
+			<a class="dfcf" href="https://so.eastmoney.com/web/s?keyword={{company.title}}" target="blank" title="访问东方财富网获取{{ company.title }}信息">详情</a>
 		</span>
 	</li>
 	{% endfor %}

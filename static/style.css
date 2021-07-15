@@ -6,12 +6,13 @@ body{
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+/*导航栏*/
 nav ul{
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #333;
+	background-color: #ff9900;
 }
 
 nav li{
@@ -28,6 +29,53 @@ nav li a{
 
 nav li a:hover{
 	background-color: #111;
+}
+
+/*两个输入框和提交按钮相关的CSS定义*/
+/*覆盖某些浏览器对input元素定义的字体*/
+input[type=submit]{
+	font-family: inherit;
+}
+
+input[type=text]{
+	border: 1px solid #ddd;
+}
+
+input[name=title]{
+	width: 90px;
+}
+
+input[name=code]{
+	width: 50px;
+}
+
+.btn{
+	font-size: 12px;
+	padding: 3px 5px;
+	text-decoration: none;
+	cursor: pointer;
+	color: black;
+	border: 1px solid #555555;
+	border-radius: 5px;
+}
+
+.btn:hover{
+	text-decoration: none;
+	background-color: black;
+	color: white;
+	border: 1px solid black;
+}
+
+/*提示消息*/
+.alert{
+	position: relative;
+	padding: 7px;
+	margin: 7px 0;
+	border: 1px solid transparent;
+	color: #004085;
+	background-color: #cce5ff;
+	border-color: #b8daff;
+	border-radius: 5px;
 }
 
 /*页脚*/
@@ -72,6 +120,7 @@ footer{
 	height: 100px;
 }
 
+/*东方财富链接*/
 .float-right{
 	float: right;
 }
@@ -79,9 +128,14 @@ footer{
 .dfcf{
 	font-size: 12px;
 	font-weight: bold;
-	color: black;
+	color: #ffffff;
 	text-decoration: none;
-	background: #F5C518;
+	background: #ff9900;
 	border-radius: 5px;
 	padding: 3px 5px;
+}
+
+/*表单元素平排*/
+.inline-form{
+	display: inline;
 }

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>编辑内容</h3>
+<form method="post">
+	股票名称：<input type="text" name="title" autocomplete="off" required value="{{ company.title }}">
+	股票代码：<input type="text" name="code" autocomplete="off" required value="{{ company.code }}">	
+	<input class="btn" type="submit" name="submit" value="编辑">
+</form>
+{% endblock %}

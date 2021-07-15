@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>用户设置</h3>
+<form method="post">
+	请输入您的用户名：<input type="text" name="name" autocomplete="off" required value="{{ current_user.name }}">
+	<input class="btn" type="submit" name="submit" value="提交">
+</form>
+{% endblock %}
