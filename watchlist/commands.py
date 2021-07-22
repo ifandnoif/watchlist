@@ -51,7 +51,7 @@ def admin(username, password):
 		user.set_password(password) # 设置密码
 	else:
 		click.echo('创建用户。')
-		userfd = User(username=username, name='琢磨')
+		userfd = User(username=username, name='admin')
 		user.set_password(password) # 设置密码
 		db.session.add(user)
 
